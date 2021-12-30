@@ -1,0 +1,55 @@
+---
+title: "Data Cleaning"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Steps in Data Cleaning
+
+## Step 1: visually inspect
+Let's install our packages first:
+```{r}
+pacman::p_load(
+  rio,        # importing data  
+  here,       # relative file pathways  
+  janitor,    # data cleaning and tables
+  lubridate,  # working with dates
+  epikit,     # age_categories() function
+  tidyverse   # data management and visualization
+)
+```
+
+We will be using the original data from Fulton County in Excel format
+
+The `rio` package can be used to import the file:
+(the R project has been set up first with data sub-folder)
+```{r}
+list_raw <- import(here("data", "covid_example_data", "covid_example_data.xlsx"))
+```
+
+There are some quick checks to see if data imported including:  
+- checking the console to ensure no error messages  
+- checking Environment window: should see `list_raw` in Data with number of obs and variables
+
+However, we will want to take a closer look:
+`str` from base R allows us to see the structure of the data set incl. variable (column) names, types and values for the first few observations (rows):
+```{r}
+str(list_raw)
+```
+
+We can also see the same information in a cleaner form using the `tidyverse`
+```{r}
+glimpse(list_raw)
+```
+
+
+## Step 2: rename and select
+
+
+## Step 3: clean dates, categorical, numerical
+
+
+## Step 4: filter and remove duplicates
